@@ -30,12 +30,17 @@ function BigCats() {
     const newList = catList.filter(ele => ele.latinName.includes("Panthera"))
     setCatList(newList)
   }
+
+  function handleReset() {
+    setCatList([...cats])
+  }
  
   return (
    <>
    <button onClick={handleSort}>Sort</button>
    <button onClick={handleReverse}>Reverse</button>
    <button onClick={handleFilter}>Filter</button>
+   <button onClick={handleReset}>Reset</button>
    <ul style={{display: "flex"}}>
      {catList.map((cat, i) => (<SingleCat key={i} cat={cat}/>))}
    </ul>
