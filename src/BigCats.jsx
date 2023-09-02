@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import SingleCat from "./SingleCat"
+import AddCatForm from "./AddCatForm"
 
 function BigCats() {
   const cats = [
@@ -13,6 +14,11 @@ function BigCats() {
 ]
 
   const [catList, setCatList] = useState([...cats])
+
+  function handleAddCat(newCat) {
+    newCat.id = catList.length + 1
+    setCatList([...catList, newCat])
+  }
   
   function handleSort() {
     const newList = [...catList]
@@ -37,13 +43,14 @@ function BigCats() {
  
   return (
    <>
-   <button onClick={handleSort}>Sort</button>
-   <button onClick={handleReverse}>Reverse</button>
-   <button onClick={handleFilter}>Filter</button>
-   <button onClick={handleReset}>Reset</button>
-   <ul style={{display: "flex"}}>
-     {catList.map((cat, i) => (<SingleCat key={i} cat={cat}/>))}
-   </ul>
+     <button onClick={handleSort}>Sort</button>
+     <button onClick={handleReverse}>Reverse</button>
+     <button onClick={handleFilter}>Filter</button>
+     <button onClick={handleReset}>Reset</button>
+     <ul style={{display: "flex"}}>
+       {catList.map((cat, i) => (<SingleCat key={i} cat={cat}/>))}
+     </ul>
+     <AddCatForm onAddCat={handleAddCat}/>
    </>
  )
 }
