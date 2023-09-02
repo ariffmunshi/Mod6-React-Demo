@@ -1,33 +1,43 @@
 import {useState} from 'react';
 
 function AddCatForm({onAddCat}) {
-  const [name, setName] = useState("")
-  const [latinName, setLatinName] = useState("")
-  const [imageURL, setImageURL] = useState("")
+  const [cat, setCat] = useState({
+    name: "",
+    latinName: "",
+    imageURL: ""
+  })
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddCat({name, latinName, imageURL})
+    onAddCat(cat)
+  }
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setCat(prev => ({...cat, [name]: value}))
   }
   return(
     <>
       <form onSubmit={handleSubmit}>
         <label>Cat Name:
           <input type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}/>
+            value={cat.name}
+            name="name"
+            onChange={handleChange}/>
         </label>
         <br />
         <label>Cat Latin Name:
           <input type="text"
-            value={latinName}
-            onChange={(e) => setLatinName(e.target.value)}/>
+            value={cat.latinName}
+            name="latinName"
+            onChange={handleChange}/>
         </label>
         <br />
         <label>Img URL:
           <input type="text"
-            value={imageURL}
-            onChange={(e) => setImageURL(e.target.value)}/>
+            value={cat.imageURL}
+            name="imageURL"
+            onChange={handleChange}/>
         </label>
         <br />
         <button>Add Cat</button>
