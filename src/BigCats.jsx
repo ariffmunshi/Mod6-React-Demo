@@ -16,8 +16,12 @@ function BigCats() {
   const [catList, setCatList] = useState([...cats])
 
   function handleAddCat(newCat) {
-    newCat.id = catList.length + 1
     setCatList([...catList, newCat])
+  }
+
+  function handleDeleteCat(name) {
+    const newList = catList.filter(ele => ele.name !== name)
+    setCatList(newList)
   }
   
   function handleSort() {
@@ -48,7 +52,10 @@ function BigCats() {
      <button onClick={handleFilter}>Filter</button>
      <button onClick={handleReset}>Reset</button>
      <ul style={{display: "flex"}}>
-       {catList.map((cat, i) => (<SingleCat key={i} cat={cat}/>))}
+       {catList.map((cat, i) => (<SingleCat 
+                                  key={i} 
+                                  cat={cat}
+                                  onDeleteCat={handleDeleteCat}/>))}
      </ul>
      <AddCatForm onAddCat={handleAddCat}/>
    </>
