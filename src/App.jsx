@@ -1,6 +1,7 @@
 import Greeting from './Greeting'
 import BigCats from './BigCats'
 import Emoji from './Emoji'
+import ExplodingBomb from './ExplodingBomb'
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
       </Greeting>
       <BigCats />
       <Emoji />
+      <ExplodingBomb />
     </main>
   )
 }
