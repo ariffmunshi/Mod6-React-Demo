@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import SingleCat from "./SingleCat"
 
 function BigCats() {
@@ -10,9 +11,11 @@ function BigCats() {
   { name: 'Snow leopard', latinName: 'Panthera uncia', imageURL: "http://placekitten.com/140/120" },
   { name: 'Tiger', latinName: 'Panthera tigris', imageURL: "http://placekitten.com/120/120" },
 ]
+
+  const [catList, setCatList] = useState([...cats])
  return (
    <ul style={{display: "flex"}}>
-     {cats.map((cat, i) => (<SingleCat key={i} cat={cat}/>))}
+     {catList.map((cat, i) => (<SingleCat key={i} cat={cat}/>))}
    </ul>
  )
 }
