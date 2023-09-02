@@ -25,11 +25,17 @@ function BigCats() {
     newList.reverse()
     setCatList(newList)
   }
+
+  function handleFilter() {
+    const newList = catList.filter(ele => ele.latinName.includes("Panthera"))
+    setCatList(newList)
+  }
  
   return (
    <>
    <button onClick={handleSort}>Sort</button>
    <button onClick={handleReverse}>Reverse</button>
+   <button onClick={handleFilter}>Filter</button>
    <ul style={{display: "flex"}}>
      {catList.map((cat, i) => (<SingleCat key={i} cat={cat}/>))}
    </ul>
